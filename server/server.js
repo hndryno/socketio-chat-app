@@ -10,7 +10,7 @@ app.use(express.static(publicPath))
 let port = process.env.PORT || 3000
 
 //listen port
-app.listen(3000, () => {
+app.listen(`${port}`, () => {
     console.log(`server is up on port ${port}`)
 })
  
