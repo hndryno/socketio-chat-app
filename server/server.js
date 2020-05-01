@@ -36,7 +36,7 @@ io.on('connection', (socket) => {
         io.to(params.room).emit('updateUserList', users.getUserList(params.room))
 
         //saat user baru gabung, admin mengirim pesan ini ke diri sendiri
-        socket.emit('newMessage',generateMessage('Admin', `selamat datang di ${params.room}`))
+        socket.emit('newMessage',generateMessage('System', `selamat datang di ${params.room}`))
 
         //saat user baru gabung, admin mengirim pesan kepada semua user yang bergabung kecuali user yang baru bergabung
         socket.broadcast.to(params.room).emit('newMessage',generateMessage('Admin', `${params.name}`))
@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
         if(user){
             io.to(user.room).emit('updateUserList', users.getUserList(user.room))
 
-            socket.broadcast.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} meninggalkan obrolan`))
+            socket.broadcast.to(user.room).emit('newMessage', generateMessage('System', `${user.name} meninggalkan obrolan`))
 
         }
         console.log('user was disconnect')
